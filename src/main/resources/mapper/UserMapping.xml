@@ -6,4 +6,20 @@
         	SELECT * FROM easyuser
        	    WHERE username=#{username} AND password=#{password} AND state = 1
     </select>
+
+    <select id="getAllUser" resultType="com.jt.sportplay.bean.User">
+        SELECT * FROM easyUser
+        <if test="username !=null ">
+            WHERE username like #{username}
+        </if>
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+
+    <select id="getUserCounts" resultType="java.lang.Integer">
+        SELECT count(*) FROM easyuser
+        <if test="username !=null ">
+            WHERE username like #{username}
+        </if>
+--         WHERE  username like connect ('%',#{username},'%')
+    </select>
 </mapper>
