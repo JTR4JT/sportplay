@@ -19,4 +19,6 @@ public interface UserDao {
     public User getUserByMassage(@Param("username") String username,@Param("password") String password);
     public List<User> getAllUser(@Param("username")String username,@Param("pageStart")int PageStart,@Param("pageSize")int pageSize);
     public int getUserCounts(@Param("username")String username);
+    public int updateState(Integer id, Boolean state);
+    public int addUser(User user);
 }

@@ -20,6 +20,16 @@
         <if test="username !=null ">
             WHERE username like #{username}
         </if>
---         WHERE  username like connect ('%',#{username},'%')
     </select>
+
+    <update id="updateState">
+        UPDATE easyuser SET state = #{state} WHERE id = #{id}
+    </update>
+
+    <insert id="addUser">
+        insert into easyuser
+        (username,password,email,role,state)
+        value
+        (#{username},#{password},#{email},#{role},#{state})
+    </insert>
 </mapper>
