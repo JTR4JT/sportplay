@@ -48,7 +48,28 @@ public class UserController {
         user.setRole("普通用户");
         user.setState(false);
         int i = userDao.addUser(user);
-
         return i>0?"success":"error";
+    }
+
+    @RequestMapping("/deleteUser")
+    public String deleteUser(int id){
+        int i = userDao.deleteUser(id);
+        return i>0?"success":"error";
+    }
+
+    @RequestMapping("/getUpdate")
+    public String getUpdateUser(int id){
+        System.out.println("编号:"+id);
+        User updateUser = userDao.getUpdateUser(id);
+        String users_json = JSON.toJSONString(updateUser);
+        return users_json;
+    }
+
+    @RequestMapping("/editUser")
+    public String editUser(@RequestBody User user){
+//        System.out.println(user);
+        int i = userDao.editUser(user);
+        String str = i >0?"success":"error";
+        return str;
     }
 }

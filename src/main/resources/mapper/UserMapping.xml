@@ -32,4 +32,17 @@
         value
         (#{username},#{password},#{email},#{role},#{state})
     </insert>
+
+    <delete id="deleteUser">
+        delete from easyuser where id = #{id}
+    </delete>
+
+    <select id="getUpdateUser" resultType="com.jt.sportplay.bean.User">
+        select * from easyuser where id = #{id}
+    </select>
+
+    <update id="editUser">
+        UPDATE easyuser SET username = #{username} , password = #{password} ,
+        email = #{email} WHERE id = #{id}
+    </update>
 </mapper>
